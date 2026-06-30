@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindBuddy Therapy</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#F8F0FF,#EADCF8);
+min-height:100vh;
+padding:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+width:100%;
+max-width:800px;
+background:white;
+padding:30px;
+border-radius:25px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+h1{
+text-align:center;
+color:#9B59B6;
+margin-bottom:20px;
+}
+
+.mood{
+background:#F8F0FF;
+padding:15px;
+border-radius:15px;
+margin-bottom:20px;
+text-align:center;
+font-size:20px;
+color:#4A235A;
+}
+
+.therapy-box{
+background:#FAF7FF;
+padding:20px;
+border-radius:15px;
+line-height:1.8;
+color:#4A235A;
+font-size:18px;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:20px;
+border:none;
+border-radius:10px;
+background:#B57EDC;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#9B59B6;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>🩺 MindBuddy Therapy</h1>
+
+<div class="mood">
+Today's Mood:
+<span id="moodText">Not Selected</span>
+</div>
+
+<div class="therapy-box" id="therapyText">
+Take care of yourself today 💜
+</div>
+
+<button onclick="window.location.href='index.html'">
+🏠 Back to Home
+</button>
+
+</div>
+
+<script>
+
+let moodKey =
+"mood_" + new Date().toLocaleDateString();
+
+let mood =
+localStorage.getItem(moodKey) || "Not Selected";
+
+document.getElementById("moodText").innerHTML = mood;
+
+let therapy = "";
+
+if(mood.includes("Happy")){
+
+therapy =
+"🌸 It is wonderful to see that you are feeling happy today. Take a moment to appreciate the good things around you. Happiness grows when it is shared, so spend time with people you care about and continue doing activities that bring you joy. Remember to be grateful for even the small positive moments in your day.";
+
+}
+
+else if(mood.includes("Good")){
+
+therapy =
+"✨ You seem to be doing well today. Keep moving forward one step at a time. Progress does not have to be perfect. Continue maintaining healthy habits, stay hydrated, and make time for things that make you feel relaxed and comfortable.";
+
+}
+
+else if(mood.includes("Okay")){
+
+therapy =
+"💜 It is completely okay to have an average day. Not every day needs to be exciting or productive. Give yourself permission to rest. Writing your thoughts in your journal can help you understand your feelings better and bring clarity to your mind.";
+
+}
+
+else if(mood.includes("Sad")){
+
+therapy =
+"🤗 Feeling sad does not mean you are weak. Emotions come and go, just like clouds in the sky. Be gentle with yourself today. Talk to someone you trust, listen to calming music, or spend a few quiet minutes reflecting on positive memories. You do not have to handle everything alone.";
+
+}
+
+else if(mood.includes("Stressed")){
+
+therapy =
+"🧘 It sounds like you may be carrying a lot right now. Pause for a moment and take a slow deep breath. Focus only on what you can do today instead of worrying about everything at once. Try a breathing exercise, drink some water, and give yourself a short break. Small pauses can help calm a busy mind.";
+
+}
+
+else{
+
+therapy =
+"💜 Welcome to MindBuddy. Start by tracking your mood and writing a journal entry. Understanding your thoughts and emotions is the first step toward caring for your mental well-being.";
+}
+
+document.getElementById("therapyText").innerHTML = therapy;
+
+</script>
+
+</body>
+</html>
+

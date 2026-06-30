@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindBuddy Diary</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#F8F0FF,#EADCF8);
+padding:20px;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+h1{
+text-align:center;
+color:#9B59B6;
+margin-bottom:10px;
+}
+
+#todayDate{
+text-align:center;
+margin-bottom:20px;
+color:#666;
+}
+
+textarea{
+width:100%;
+height:250px;
+padding:15px;
+border:2px solid #EADCF8;
+border-radius:15px;
+font-size:16px;
+resize:none;
+outline:none;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:10px;
+background:#B57EDC;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#9B59B6;
+}
+
+.journal-card{
+background:#F8F0FF;
+padding:15px;
+border-radius:12px;
+margin-top:15px;
+}
+
+.journal-card h3{
+color:#9B59B6;
+margin-bottom:8px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📖 My Diary</h1>
+
+<h3 id="todayDate"></h3>
+
+<textarea
+id="journalText"
+placeholder="Write your thoughts here..."></textarea>
+
+<button onclick="saveJournal()">
+💾 Save Journal
+</button>
+
+<button onclick="window.location.href='index.html'">
+🏠 Back to Home
+</button>
+
+<h2 style="margin-top:25px;color:#9B59B6;">
+Saved Journals
+</h2>
+
+<div id="journalList"></div>
+
+</div>
+
+<script>
+
+let today = new Date();
+
+let dateString = today.toLocaleDateString(
+'en-US',
+{
+weekday:'long',
+year:'numeric',
+month:'long',
+day:'numeric'
+}
+);
+
+document.getElementById("todayDate").innerHTML =
+dateString;
+
+loadJournals();
+
+function saveJournal(){
+
+let text =
+document.getElementById("journalText").value.trim();
+
+if(text === ""){
+alert("Please write something!");
+return;
+}
+
+let key =
+"journal_" + new Date().toLocaleDateString();
+
+localStorage.setItem(key,text);
+
+alert("Journal Saved 💜");
+
+document.getElementById("journalText").value="";
+
+loadJournals();
+
+}
+
+function loadJournals(){
+
+let journalList =
+document.getElementById("journalList");
+
+journalList.innerHTML = "";
+
+for(let i=0;i<localStorage.length;i++){
+
+let key = localStorage.key(i);
+
+if(key.startsWith("journal_")){
+
+let journal =
+localStorage.getItem(key);
+
+journalList.innerHTML += `
+
+<div class="journal-card">
+
+<h3>${key.replace("journal_","")}</h3>
+
+<p>${journal}</p>
+
+</div>
+
+`;
+
+}
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

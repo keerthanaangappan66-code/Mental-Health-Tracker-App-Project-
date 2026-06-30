@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindBuddy</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(180deg,#d8c7f7,#f5efff);
+min-height:100vh;
+padding:20px;
+}
+
+.top-bar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.icon{
+width:65px;
+height:65px;
+border:none;
+border-radius:50%;
+background:white;
+font-size:28px;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.title{
+text-align:center;
+font-size:50px;
+color:white;
+margin-top:10px;
+margin-bottom:20px;
+}
+
+.pet-section{
+text-align:center;
+}
+
+.pet-section img{
+width:280px;
+}
+
+.message-box{
+width:85%;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:30px;
+margin-top:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.message-box h2{
+color:#4A235A;
+margin-bottom:10px;
+}
+
+.message-box p{
+font-size:20px;
+color:#5B2C6F;
+}
+
+.quote-box{
+width:85%;
+margin:auto;
+background:#E9DDFB;
+padding:20px;
+border-radius:25px;
+margin-top:25px;
+text-align:center;
+font-size:22px;
+color:#4A235A;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.bottom-icons{
+display:flex;
+justify-content:center;
+gap:50px;
+margin-top:50px;
+}
+
+.bottom-btn{
+width:90px;
+height:90px;
+border:none;
+border-radius:50%;
+background:white;
+font-size:40px;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.bottom-btn:hover,
+.icon:hover{
+transform:scale(1.05);
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+
+<button class="icon" onclick="openProfile()">
+👤
+</button>
+
+<button class="icon"
+onclick="window.location.href='diary.html'">
+📖
+</button>
+
+</div>
+
+<h1 class="title">MindBuddy</h1>
+
+<div class="pet-section">
+
+<img id="petImage" src="panda.png" alt="Panda">
+
+</div>
+
+<div class="message-box">
+
+<h2 id="welcomeText"></h2>
+
+<p id="petMessage">
+Today is your chance to grow stronger 💜
+</p>
+
+</div>
+
+<div class="quote-box">
+
+<p id="quote"></p>
+
+</div>
+
+<div class="bottom-icons">
+
+<button class="bottom-btn"
+onclick="window.location.href='breathing.html'">
+🧘
+</button>
+
+<button class="bottom-btn"
+onclick="window.location.href='pets.html'">
+🐾
+</button>
+<button class="bottom-btn"
+onclick="window.location.href='mood.html'">
+😊
+</button>
+
+<button class="bottom-btn"
+onclick="window.location.href='therapy.html'">
+🩺
+</button>
+</div>
+
+<script>
+
+let userName =
+localStorage.getItem("userName");
+
+if(userName){
+
+document.getElementById("welcomeText")
+.innerHTML =
+"Hi " + userName + "! 💜";
+
+}
+else{
+
+document.getElementById("welcomeText")
+.innerHTML =
+"Hi Friend! 💜";
+
+}
+
+let quotes = [
+
+"🌟 You are stronger than yesterday.",
+
+"💜 Believe in yourself.",
+
+"✨ Every day is a fresh start.",
+
+"🌸 Your feelings matter.",
+
+"😊 Keep smiling today.",
+
+"🌈 Small progress is still progress."
+
+];
+
+let randomQuote =
+quotes[Math.floor(Math.random()*quotes.length)];
+
+document.getElementById("quote")
+.innerHTML = randomQuote;
+
+
+let petType = localStorage.getItem("petType");
+let petName = localStorage.getItem("petName");
+
+let petImage = document.getElementById("petImage");
+
+if(petType === "Dog"){
+    petImage.src = "dog.png";
+}
+else if(petType === "Cat"){
+    petImage.src = "cat.png";
+}
+else if(petType === "Rabbit"){
+    petImage.src = "rabbit.png";
+}
+else{
+    petImage.src = "panda.png";
+}
+
+if(petName){
+    document.getElementById("petMessage").innerHTML =
+    "Hi! I'm " + petName + " 💜";
+}
+
+function openProfile(){
+
+let userName = localStorage.getItem("userName");
+
+if(userName){
+    window.location.href = "profile.html";
+}
+else{
+    window.location.href = "createaccount.html";
+}
+
+}
+
+</script>
+</body>
+</html>

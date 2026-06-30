@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindBuddy Profile</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#F8F0FF,#EADCF8);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.container{
+background:white;
+width:100%;
+max-width:600px;
+padding:30px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.profile-icon{
+font-size:80px;
+margin-bottom:15px;
+}
+
+h1{
+color:#9B59B6;
+margin-bottom:20px;
+}
+
+.info{
+background:#F8F0FF;
+padding:15px;
+border-radius:15px;
+margin:10px 0;
+text-align:left;
+}
+
+.info h3{
+color:#9B59B6;
+margin-bottom:5px;
+}
+
+.info p{
+color:#555;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:12px;
+border:none;
+border-radius:10px;
+background:#B57EDC;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#9B59B6;
+}
+
+.logout{
+background:#E74C3C;
+}
+
+.logout:hover{
+background:#C0392B;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="profile-icon">👤</div>
+
+<h1>My Profile</h1>
+
+<div class="info">
+<h3>Name</h3>
+<p id="name">Not Available</p>
+</div>
+
+<div class="info">
+<h3>Email</h3>
+<p id="email">Not Available</p>
+</div>
+
+<div class="info">
+<h3>Selected Pet</h3>
+<p id="pet">Not Selected</p>
+</div>
+
+<div class="info">
+<h3>Today's Mood</h3>
+<p id="mood">Not Selected</p>
+</div>
+
+<div class="info">
+<h3>Breathing Streak</h3>
+<p id="streak">0 Days 🔥</p>
+</div>
+
+<button onclick="window.location.href='index.html'">
+🏠 Back to Home
+</button>
+
+<button class="logout" onclick="logout()">
+🚪 Logout
+</button>
+
+</div>
+
+<script>
+
+// User Details
+
+document.getElementById("name").innerHTML =
+localStorage.getItem("userName") || "Not Available";
+
+document.getElementById("email").innerHTML =
+localStorage.getItem("userEmail") || "Not Available";
+
+// Pet
+
+document.getElementById("pet").innerHTML =
+localStorage.getItem("petType") || "Not Selected";
+
+// Mood
+
+let moodKey =
+"mood_" + new Date().toLocaleDateString();
+
+document.getElementById("mood").innerHTML =
+localStorage.getItem(moodKey) || "Not Selected";
+
+// Breathing Streak
+
+document.getElementById("streak").innerHTML =
+(localStorage.getItem("breathingStreak") || 0)
++ " Days 🔥";
+
+// Logout
+
+function logout(){
+
+if(confirm("Are you sure you want to logout?")){
+
+localStorage.removeItem("userName");
+localStorage.removeItem("userEmail");
+
+window.location.href = "createaccount.html";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
