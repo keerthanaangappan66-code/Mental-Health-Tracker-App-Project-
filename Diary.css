@@ -1,0 +1,96 @@
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#F8F0FF,#EADCF8);
+}
+
+.diary-page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.diary-card{
+    width:100%;
+    max-width:700px;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.diary-card h1{
+    text-align:center;
+    color:#8E44AD;
+}
+
+.diary-date{
+    text-align:center;
+    color:#666;
+    margin-bottom:20px;
+}
+
+textarea{
+    width:100%;
+    height:220px;
+    border:2px solid #D8BFD8;
+    border-radius:12px;
+    padding:15px;
+    font-size:16px;
+    resize:none;
+    outline:none;
+    margin-top:15px;
+}
+
+textarea:focus{
+    border-color:#9B59B6;
+}
+
+.save-btn{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#9B59B6;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+}
+
+.save-btn:hover{
+    background:#7D3C98;
+}
+
+.history-btn{
+    display:block;
+    text-align:center;
+    margin-top:15px;
+    padding:12px;
+    border-radius:10px;
+    text-decoration:none;
+    background:#D8BFD8;
+    color:#4A235A;
+    font-weight:bold;
+}
+
+.history-btn:hover{
+    background:#C39BD3;
+}
+
+.back-btn{
+    display:block;
+    text-align:center;
+    margin-top:15px;
+    padding:12px;
+    border-radius:10px;
+    text-decoration:none;
+    background:#6C757D;
+    color:white;
+}
+
+.back-btn:hover{
+    background:#565E64;
+}

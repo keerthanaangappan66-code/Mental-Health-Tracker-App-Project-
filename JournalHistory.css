@@ -1,0 +1,71 @@
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#F8F0FF,#EADCF8);
+}
+
+.history-page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+}
+
+.history-card{
+    width:100%;
+    max-width:850px;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.history-card h1{
+    text-align:center;
+    color:#8E44AD;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
+}
+
+.empty{
+    text-align:center;
+    color:#8E44AD;
+}
+
+.journal-box{
+    background:#F8F0FF;
+    border-left:6px solid #9B59B6;
+    padding:18px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+.journal-box h3{
+    color:#8E44AD;
+    margin-bottom:10px;
+}
+
+.journal-box p{
+    color:#444;
+    white-space:pre-wrap;
+}
+
+.back-btn{
+    display:block;
+    text-align:center;
+    margin-top:25px;
+    padding:12px;
+    background:#6C757D;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+}
+
+.back-btn:hover{
+    background:#565E64;
+}
